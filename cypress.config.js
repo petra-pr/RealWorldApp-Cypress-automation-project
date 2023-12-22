@@ -7,6 +7,7 @@ const {
 async function setupNodeEvents(on, config) {
   // This is required for the preprocessor to be able to generate JSON reports after each run, and more,
   await addCucumberPreprocessorPlugin(on, config);
+  require('cypress-mochawesome-reporter/plugin') (on);
 
   on(
     "file:preprocessor",
@@ -38,9 +39,10 @@ async function setupNodeEvents(on, config) {
 
 module.exports = defineConfig({
   e2e: {
-    baseUrl: "https://duckduckgo.com",
+    baseUrl: "http://localhost:4200",
     specPattern: "**/*.feature",
     supportFile: "cypress/support/e2e.js",
     setupNodeEvents,
+    reporter: "cypress-mochawesome-reporter"
   },
 });
