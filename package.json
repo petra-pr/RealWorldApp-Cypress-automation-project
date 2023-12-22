@@ -1,0 +1,25 @@
+{
+  "name": "realworldapp-cypress-automation-petrap",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "realworld",
+    "cypress",
+    "automation",
+    "bdd"
+  ],
+  "author": "Petra Pribicevic",
+  "license": "ISC",
+  "devDependencies": {
+    "@badeball/cypress-cucumber-preprocessor": "^20.0.0",
+    "@cypress/webpack-preprocessor": "^6.0.0",
+    "cypress": "^10.11.0",
+    "cypress-fill-command": "^1.0.2",
+    "mochawesome": "^7.1.3",
+    "webpack": "^5.89.0"
+  }
+}
