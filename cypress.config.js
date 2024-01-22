@@ -39,7 +39,7 @@ async function setupNodeEvents(on, config) {
 
 module.exports = defineConfig({
   e2e: {
-    baseUrl: "http://localhost:4200",
+    baseUrl: "http://localhost:4200/",
     specPattern: "**/*.feature",
     supportFile: "cypress/support/e2e.js",
     setupNodeEvents,
