@@ -17,7 +17,7 @@
   "devDependencies": {
     "@badeball/cypress-cucumber-preprocessor": "^20.0.0",
     "@cypress/webpack-preprocessor": "^6.0.0",
-    "cypress": "^10.11.0",
+    "cypress": "^13.6.3",
     "cypress-fill-command": "^1.0.2",
     "cypress-mochawesome-reporter": "^3.7.0",
     "webpack": "^5.89.0"

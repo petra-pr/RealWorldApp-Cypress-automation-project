@@ -5,13 +5,17 @@ This project demonstrates the setting up of a test automation suite with Cypress
 Standard test automation suite structure and methodologies are employed, which includes the use of Page Object Models for storing selectors, helper files for storing custom commands, and fixture files for storing test input data.
 
 ## Installation prerequisites
+- Git
 - NodeJS LTS
+- Access to angular-realworld-example-app (Optionally included as a sumbodule in this repository)
 
 ## Installation
-- Clone this repository to your local machine
+- Clone this repository to your local machine: `git clone https://github.com/petra-pr/RealWorldApp-Cypress-automation-project.git`
 - Access this repository through a terminal: `cd RealWorldApp-Cypress-automation-project`
+- [Optional] Run this command to download angular-realworld-example-app: `git submodule update --init --recursive`
 - In this repository's root context, run `npm install`
+- [Optional] In the sumbodule repository's root context, run `npm install`
 
 ## Usage
-- Run the Angular application with the command `npx run serve`
-- Run the tests with the command `npx cypress run`
+- In one terminal, access the Angular application `cd angular-realworld-example-app` and run it with the command `npm start`
+- In another terminal, access this repository's root `cd RealWorldApp-Cypress-automation-project` and run the tests with the command `npx cypress run`
