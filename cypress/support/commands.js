@@ -27,8 +27,8 @@
 Cypress.Commands.add('loginApi', (url) => {
     const userCredentials = {
         "user": {
-            "email": "vurdobidru@gufum.com",
-            "password": "vurdobidru@gufum" //fixtures todo
+            "email": Cypress.env('username'),
+            "password": Cypress.env('password')
         }
     }
 

@@ -5,12 +5,10 @@ Given('The user is successfully logged in', () => {
     cy.loginApi('/')
 
     cy.get(logoutUsername)
-        .should('contain.text', 'vurdo bidru')
 })
 
 When('The user accesses the profile page', () => {
     cy.get(logoutUsername)
-        .should('contain.text', 'vurdo bidru') //fixtures todo
     cy.get(logoutNavbarItems)
         .should('have.length', 4)
     cy.get(logoutSettingsButton)
@@ -31,8 +29,8 @@ Then('The user logs out successfully', () => {
         .should('have.length', 3)
 })
 
-Then('The user has no access to the profile page', () => {
-    cy.visit('/profiles/vurdobidru') //fixtures todo
+Then('The user has no access to the settings page', () => {
+    cy.visit('/settings') //fixtures todo
     cy.url()
         .should('eq', Cypress.config().baseUrl)
     cy.get(logoutUsername)

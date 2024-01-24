@@ -7,18 +7,18 @@ Given('The user accesses the login page', () => {
 
 When('The user types in incorrect credentials', () => {
     cy.get(loginEmail)
-        .type('vurdobidru@gufum.com') //fixtures todo
+        .type(Cypress.env('username'))
     cy.get(loginPassword)
-        .type('vurdobidru') //fixtures todo
+        .type('wrongPass') //wrong password
     cy.get(loginButton)
         .click()
 })
 
 When('The user types in correct credentials', () => {
     cy.get(loginEmail) //commands todo
-        .type('vurdobidru@gufum.com')
+        .type(Cypress.env('username'))
     cy.get(loginPassword)
-        .type('vurdobidru@gufum')
+        .type(Cypress.env('password'))
     cy.get(loginButton)
         .click()
 })
@@ -51,5 +51,4 @@ Then('The user is taken to the home page', () => {
 Then('The user sees their user name on the home page', () => {
     cy.get(loginUsername)
         .should('be.visible')
-        .and('contain', 'vurdo bidru') //fixtures todo
 })

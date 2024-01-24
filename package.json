@@ -4,7 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "credentials": "node startScriptPrompt.js",
+    "test-headless": "node startScriptPrompt.js && npx cypress run",
+    "test-interactive": "node startScriptPrompt.js && npx cypress open"
   },
   "keywords": [
     "realworld",
