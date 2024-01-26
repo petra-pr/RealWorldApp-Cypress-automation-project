@@ -4,10 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "credentials": "node startScriptPrompt.js",
-    "test-headless": "node startScriptPrompt.js && npx cypress run",
-    "test-interactive": "node startScriptPrompt.js && npx cypress open"
+    "test-headless": "npm run credentials && npx cypress run",
+    "test-interactive": "npm run credentials && npx cypress open"
   },
   "keywords": [
     "realworld",
@@ -22,7 +21,7 @@
     "@cypress/webpack-preprocessor": "^6.0.0",
     "cypress": "^13.6.3",
     "cypress-fill-command": "^1.0.2",
-    "cypress-mochawesome-reporter": "^3.7.0",
+    "cypress-mochawesome-reporter": "^3.8.1",
     "webpack": "^5.89.0"
   }
 }
