@@ -9,7 +9,7 @@ const rl = readline.createInterface({
 const credentialsFile = 'cypress.env.json';
 
 function promptForCredentials() {
-    rl.question('Enter your RealWorld Example App username: ', (username) => {
+    rl.question('Enter your RealWorld Example App email: ', (username) => {
         rl.question('Enter your RealWorld Example App password: ', (password) => {
             const credentials = { username, password };
             fs.writeFileSync('cypress.env.json', JSON.stringify(credentials));
@@ -21,7 +21,7 @@ function promptForCredentials() {
 
 function confirmOverwrite() {
     rl.question('A file with credentials already exists. Do you want to overwrite it? (yes/no): ', (answer) => {
-        if (answer.toLowerCase() === 'yes') {
+        if (answer.toLowerCase() === 'yes'|| answer.toLowerCase() === 'y'||answer.toLowerCase() === '') {
             promptForCredentials();
         } else {
             console.log('Keeping existing credentials.');
