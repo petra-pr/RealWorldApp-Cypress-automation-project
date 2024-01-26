@@ -10,6 +10,5 @@ Feature: Log in to the application
 
     Given The user accesses the login page
     When The user types in correct credentials
-    Then The user accesses the application
     Then The user is taken to the home page
     Then The user sees their user name on the home page

@@ -16,12 +16,22 @@ When('The user types in incorrect credentials', () => {
 })
 
 When('The user types in correct credentials', () => {
+    cy.intercept('POST', 'https://api.realworld.io/api/users/login').as('loginApproved')
+
     cy.get(loginEmail) //commands todo
         .type(Cypress.env('username'))
     cy.get(loginPassword)
         .type(Cypress.env('password'))
     cy.get(loginButton)
         .click()
+        
+    cy.wait('@loginApproved')
+        .then(userInfo => {
+            //Set the username into a environment variable
+            Cypress.env('userName', userInfo.response.body.user.username)
+        })
+        .its('response.statusCode')
+        .should('eq', 200)
 })
 
 Then('The user is denied entry into the application', () => {
@@ -34,18 +44,6 @@ Then('The user is denied entry into the application', () => {
     cy.get(loginErrorMessage)
         .should('be.visible')
         .and('have.text', "email or password is invalid")
-})
-
-Then('The user accesses the application', () => {
-    cy.intercept('POST', 'https://api.realworld.io/api/users/login').as('loginApproved')
-
-    cy.wait('@loginApproved')
-        .then(userInfo => {
-            //Set the username into a environment variable
-            Cypress.env('userName', userInfo.response.body.user.username);
-        })
-        .its('response.statusCode')
-        .should('eq', 200)
 })
 
 Then('The user is taken to the home page', () => {
