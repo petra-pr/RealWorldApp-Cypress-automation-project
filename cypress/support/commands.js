@@ -49,5 +49,41 @@ Cypress.Commands.add('loginApi', (url) => {
         })
 })
 
+//Result: The specified number of articles is created
+//Parameters: 1. Body of the article
+Cypress.Commands.add('createArticle', (bodyObject) => {
+    cy.request({
+        url: 'https://api.realworld.io/api/articles',
+        headers: { Authorization: "Token " + localStorage.getItem('jwtToken') },
+        method: 'POST',
+        body: bodyObject
+    }).then(response => {
+        expect(response.status).to.equal(201)
+    })
+
+    //Verify that the created article exists
+    cy.request({
+        url: 'https://api.realworld.io/api/articles?limit=10&offset=0',
+        headers: {'Authorization': "Token " + localStorage.getItem('jwtToken') },
+        method: 'GET'
+    }).its('body')
+    .then(body => {
+        expect(body.articles[0].title).to.equal(bodyObject.article.title)
+        })
+})
+
+Cypress.Commands.add('deleteArticle', (articleTitle) => {
+    cy.intercept('GET', 'https://api.realworld.io/api/articles?limit=10&offset=0').as('getArticles')
+    cy.wait('@getArticles')
+        .then(allArticles => {
+            allArticles.response.body.articles.forEach((article) => {
+                if(article.title.includes(articleTitle)) {
+                    cy.request({
+                        method: 'DELETE', 
+                        url: 'https://api.realworld.io/api/articles/' + article.slug,
+                        headers: { Authorization: "Token " + localStorage.getItem('jwtToken') }
+                    })
+                }
+            })
         })
 })
