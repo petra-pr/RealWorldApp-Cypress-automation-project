@@ -87,3 +87,9 @@ Cypress.Commands.add('deleteArticle', (articleTitle) => {
             })
         })
 })
+
+Cypress.Commands.add('loadHomepage', () => {
+    cy.intercept('GET', '**/api/tags').as('loadHomepage')
+    cy.visit('/')
+    cy.wait('@loadHomepage')
+})

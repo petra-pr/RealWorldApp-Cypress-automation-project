@@ -62,7 +62,7 @@ When('I create a post with the title My first article', () => {
 Then('I should see My first article on top in the Global feed', () => {
     cy.intercept('GET', '**/api/articles?limit=10&offset=0').as('getArticles')
 
-    cy.visit('/') 
+    cy.loadHomepage() 
     cy.contains("Global Feed")
         .click()
     cy.wait('@getArticles')
