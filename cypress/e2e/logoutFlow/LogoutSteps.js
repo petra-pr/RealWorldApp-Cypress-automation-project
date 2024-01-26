@@ -9,6 +9,8 @@ Given('The user is successfully logged in', () => {
 })
 
 When('The user accesses the profile page', () => {
+    cy.get(displayedUsername) //The user's username is displayed in the navbar
+        .should('contain', Cypress.env('userName'))
     cy.get(logoutNavbarItems)
         .should('have.length', 4)
     cy.get(logoutSettingsButton)

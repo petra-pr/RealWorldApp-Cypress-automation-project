@@ -24,6 +24,8 @@
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 
+//Result: The user is logged in with user credentials from Cypress.env.json and the specified URL is opened
+//Parameters: 1. The URL to open after the user is logged in
 Cypress.Commands.add('loginApi', (url) => {
     const userCredentials = {
         "user": {
@@ -41,5 +43,11 @@ Cypress.Commands.add('loginApi', (url) => {
                     win.localStorage.setItem('jwtToken', token)
                 }
             })
+
+            //Set the username into a environment variable
+            Cypress.env('userName', body.user.username)
+        })
+})
+
         })
 })
